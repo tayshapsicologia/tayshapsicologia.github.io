@@ -1,372 +1,387 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Salomé Argoti - Psicóloga Psicoanalista. Acompañamiento profesional para tu bienestar emocional en Quito, Ecuador.">
-    <meta name="keywords" content="psicóloga, psicoanalista, terapia, Quito, Ecuador, salud mental">
-    <title>Salomé Argoti - Psicóloga Psicoanalista</title>
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Psicología Clínica y Psicoanálisis en Quito. Un espacio para detenerte, observar y pensar con profundidad. Salomé Argoti."/>
+  <meta name="theme-color" content="#0e0e0c"/>
+
+  <!-- Open Graph (redes sociales) -->
+  <meta property="og:title"       content="Psicología Clínica — Salomé Argoti"/>
+  <meta property="og:description" content="Espacio de psicología clínica y psicoanálisis en Quito. Enfoque integrativo: neurológico, psíquico y social."/>
+  <meta property="og:type"        content="website"/>
+  <meta property="og:url"         content="https://tu-usuario.github.io/clinica/"/>
+  <meta property="og:image"       content="assets/images/og-image.png"/>
+
+  <title>Psicología Clínica — Salomé Argoti</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg"/>
+
+  <!-- Fuentes (Google Fonts — subset automático para rendimiento) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="assets/css/style.css"/>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav id="navbar">
-        <div class="container">
-            <div class="nav-content">
-                <div class="logo">Salomé Argoti</div>
-                
-                <div class="nav-links" id="navLinks">
-                    <a href="#inicio" class="nav-link">Inicio</a>
-                    <a href="#sobre-mi" class="nav-link">Sobre Mí</a>
-                    <a href="#servicios" class="nav-link">Servicios</a>
-                    <a href="#metodologia" class="nav-link">Metodología</a>
-                    <a href="#contacto" class="nav-link">Contacto</a>
-                </div>
 
-                <button class="btn-primary desktop-only" onclick="scrollToSection('contacto')">
-                    Agenda tu Sesión
-                </button>
+<!-- ═══════════════════════════════════════════════════════════
+     NAVBAR
+     ═══════════════════════════════════════════════════════════ -->
+<nav>
+  <a href="#inicio" class="nav-logo">Salomé <em>Argoti</em></a>
 
-                <button class="hamburger" id="hamburger" aria-label="Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
-    </nav>
+  <ul class="nav-links">
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#enfoque">Enfoque</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#inicio" class="mobile-link">Inicio</a>
-        <a href="#sobre-mi" class="mobile-link">Sobre Mí</a>
-        <a href="#servicios" class="mobile-link">Servicios</a>
-        <a href="#metodologia" class="mobile-link">Metodología</a>
-        <a href="#contacto" class="mobile-link">Contacto</a>
-        <button class="btn-primary" onclick="scrollToSection('contacto')">
-            Agenda tu Sesión
-        </button>
+  <a href="#contacto" class="nav-cta">Solicitar sesión</a>
+
+  <!-- Hamburger (visible solo mobile) -->
+  <button class="nav-hamburger" aria-label="Abrir menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- Overlay menú móvil -->
+<div class="nav-mobile-overlay">
+  <a href="#inicio">Inicio</a>
+  <a href="#enfoque">Enfoque</a>
+  <a href="#proceso">Proceso</a>
+  <a href="#contacto">Contacto</a>
+  <a href="#contacto" class="mobile-cta">Solicitar sesión</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════════ -->
+<section class="hero" id="inicio">
+
+  <!-- Ilustración conceptual: red neuronal -->
+  <svg class="hero-illustration" viewBox="0 0 680 680" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- Nodos -->
+    <circle cx="340" cy="340" r="3"   fill="#c4a46b"/>
+    <circle cx="220" cy="240" r="2"   fill="#a89f94"/>
+    <circle cx="480" cy="260" r="2.5" fill="#a89f94"/>
+    <circle cx="160" cy="400" r="2"   fill="#a89f94"/>
+    <circle cx="520" cy="420" r="2"   fill="#a89f94"/>
+    <circle cx="280" cy="160" r="1.8" fill="#6b6560"/>
+    <circle cx="440" cy="500" r="1.8" fill="#6b6560"/>
+    <circle cx="120" cy="300" r="1.5" fill="#6b6560"/>
+    <circle cx="560" cy="340" r="1.5" fill="#6b6560"/>
+    <circle cx="300" cy="520" r="1.5" fill="#6b6560"/>
+    <circle cx="380" cy="180" r="1.5" fill="#6b6560"/>
+    <circle cx="200" cy="480" r="1.3" fill="#6b6560"/>
+    <circle cx="500" cy="180" r="1.3" fill="#6b6560"/>
+    <circle cx="140" cy="520" r="1.2" fill="#6b6560"/>
+    <circle cx="580" cy="240" r="1.2" fill="#6b6560"/>
+    <!-- Conexiones sinápticas -->
+    <line x1="340" y1="340" x2="220" y2="240" stroke="#a89f94" stroke-width=".7" opacity=".6"/>
+    <line x1="340" y1="340" x2="480" y2="260" stroke="#a89f94" stroke-width=".7" opacity=".5"/>
+    <line x1="340" y1="340" x2="160" y2="400" stroke="#a89f94" stroke-width=".6" opacity=".4"/>
+    <line x1="340" y1="340" x2="520" y2="420" stroke="#a89f94" stroke-width=".6" opacity=".45"/>
+    <line x1="220" y1="240" x2="280" y2="160" stroke="#6b6560" stroke-width=".5" opacity=".5"/>
+    <line x1="220" y1="240" x2="120" y2="300" stroke="#6b6560" stroke-width=".5" opacity=".4"/>
+    <line x1="480" y1="260" x2="500" y2="180" stroke="#6b6560" stroke-width=".5" opacity=".4"/>
+    <line x1="480" y1="260" x2="580" y2="240" stroke="#6b6560" stroke-width=".5" opacity=".35"/>
+    <line x1="160" y1="400" x2="200" y2="480" stroke="#6b6560" stroke-width=".5" opacity=".4"/>
+    <line x1="160" y1="400" x2="140" y2="520" stroke="#6b6560" stroke-width=".4" opacity=".3"/>
+    <line x1="520" y1="420" x2="440" y2="500" stroke="#6b6560" stroke-width=".5" opacity=".4"/>
+    <line x1="280" y1="160" x2="380" y2="180" stroke="#6b6560" stroke-width=".4" opacity=".35"/>
+    <line x1="300" y1="520" x2="200" y2="480" stroke="#6b6560" stroke-width=".4" opacity=".3"/>
+    <line x1="300" y1="520" x2="440" y2="500" stroke="#6b6560" stroke-width=".4" opacity=".3"/>
+    <!-- Anillos lejanos -->
+    <circle cx="340" cy="340" r="180" stroke="#a89f94" stroke-width=".5" opacity=".15" fill="none" stroke-dasharray="4 8"/>
+    <circle cx="340" cy="340" r="260" stroke="#6b6560" stroke-width=".4" opacity=".1"  fill="none" stroke-dasharray="2 12"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="hero-left reveal">
+      <h1>
+        No todo malestar<br>
+        tiene una <em>solución rápida.</em>
+      </h1>
+    </div>
+    <div class="hero-right reveal reveal-delay-1">
+      <p>
+        Este es un espacio para detenerte, observar y pensar.
+        Para explorar lo que no se resuelve con consejos,
+        sino con tiempo, escucha y profundidad.
+      </p>
+      <div class="hero-divider"></div>
+      <div class="hero-meta">
+        <span><div class="dot"></div>Psicología Clínica</span>
+        <span><div class="dot"></div>Psicoanálisis</span>
+        <span><div class="dot"></div>Quito</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Leer</span>
+    <div class="arrow"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     THE PAUSE — Pensamiento
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section-pause" id="pensamiento">
+  <div class="pause-neuron"></div>
+  <div class="pause-inner reveal">
+    <div class="section-numeral">I</div>
+    <p class="pause-quote">
+      "No puedes saber lo que piensas<br>
+      si no te paras a <em>pensarlo.</em>"
+    </p>
+    <p class="pause-note">
+      La mayor parte del tiempo actuamos desde patrones que no hemos examinado.
+      El trabajo clínico no consiste en sentirse mejor de inmediato.
+      Consiste en entenderse, con la honestidad que eso exige.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     INTEGRACIÓN — Neuro / Psíquico / Social
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section-integration" id="enfoque">
+  <div class="integration-header reveal">
+    <h2>Tres dimensiones.<br><em>Un solo ser.</em></h2>
+    <p>
+      El malestar no es solo tuyo. Existe en la intersección
+      de cómo funciona tu cerebro, cómo se forma tu psyche,
+      y las condiciones reales en las que vives.
+    </p>
+  </div>
+
+  <div class="pillars">
+    <!-- NEURO -->
+    <div class="pillar reveal">
+      <span class="pillar-num">01</span>
+      <svg class="pillar-svg" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+        <circle cx="28" cy="28" r="18" stroke="#c4a46b" stroke-width=".8" fill="none" opacity=".4"/>
+        <circle cx="28" cy="28" r="3"  fill="#c4a46b"/>
+        <line x1="28" y1="10" x2="28" y2="18" stroke="#c4a46b" stroke-width=".8" opacity=".6"/>
+        <line x1="28" y1="38" x2="28" y2="46" stroke="#c4a46b" stroke-width=".8" opacity=".6"/>
+        <line x1="10" y1="28" x2="18" y2="28" stroke="#c4a46b" stroke-width=".8" opacity=".6"/>
+        <line x1="38" y1="28" x2="46" y2="28" stroke="#c4a46b" stroke-width=".8" opacity=".6"/>
+        <line x1="15" y1="15" x2="20" y2="20" stroke="#c4a46b" stroke-width=".6" opacity=".4"/>
+        <line x1="36" y1="36" x2="41" y2="41" stroke="#c4a46b" stroke-width=".6" opacity=".4"/>
+        <circle cx="28" cy="10" r="1.2" fill="#c4a46b" opacity=".7"/>
+        <circle cx="28" cy="46" r="1.2" fill="#c4a46b" opacity=".7"/>
+        <circle cx="10" cy="28" r="1.2" fill="#c4a46b" opacity=".7"/>
+        <circle cx="46" cy="28" r="1.2" fill="#c4a46b" opacity=".7"/>
+      </svg>
+      <h3>Lo neurológico</h3>
+      <p>
+        Cómo el cerebro procesa, regula y responde.
+        Las bases biológicas del estrés, la memoria
+        y la capacidad de adaptarse no son un dato menor:
+        son parte de cómo estás.
+      </p>
     </div>
 
-    <!-- Hero Section -->
-    <section id="inicio" class="hero">
-        <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <h1 class="hero-title fade-in">Salomé Argoti</h1>
-                    <h2 class="hero-subtitle fade-in-delay-1">Psicología y Psicoanálisis</h2>
-                    <p class="hero-text fade-in-delay-2">
-                        Acompañamiento profesional para tu bienestar emocional. 
-                        Un espacio seguro y confidencial para explorar, comprender y transformar.
-                    </p>
-                    <div class="hero-buttons fade-in-delay-3">
-                        <button class="btn-primary" onclick="scrollToSection('contacto')">
-                            Agenda tu Primera Sesión
-                        </button>
-                        <button class="btn-secondary" onclick="scrollToSection('sobre-mi')">
-                            Conocer Más
-                        </button>
-                    </div>
-                </div>
-             <div class="hero-image fade-in-delay-2">
-                <img src="assets/images/hero-salome.jpg" 
-                 alt="Psi.Salomé Argoti - Psicóloga Psicoanalista"
-                 class="hero-img">
-                </div>
-            </div>
+    <!-- PSÍQUICO -->
+    <div class="pillar reveal reveal-delay-1">
+      <span class="pillar-num">02</span>
+      <svg class="pillar-svg" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+        <ellipse cx="28" cy="28" rx="20" ry="12" stroke="#c4a46b" stroke-width=".7" fill="none" opacity=".3"/>
+        <ellipse cx="28" cy="28" rx="14" ry="8"  stroke="#c4a46b" stroke-width=".7" fill="none" opacity=".5"/>
+        <ellipse cx="28" cy="28" rx="7"  ry="4"  stroke="#c4a46b" stroke-width=".8" fill="none" opacity=".7"/>
+        <circle  cx="28" cy="28" r="2.5" fill="#c4a46b"/>
+        <line x1="28" y1="32" x2="28" y2="48" stroke="#c4a46b" stroke-width=".5" opacity=".35" stroke-dasharray="2 3"/>
+      </svg>
+      <h3>Lo psíquico</h3>
+      <p>
+        Lo que no se dice, lo que se repite sin entenderlo,
+        los patrones que se forman antes de que puedas
+        eligirlos. El inconsciente no es metáfora:
+        es donde ocurre buena parte de tu vida.
+      </p>
+    </div>
+
+    <!-- SOCIAL -->
+    <div class="pillar reveal reveal-delay-2">
+      <span class="pillar-num">03</span>
+      <svg class="pillar-svg" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+        <line x1="8"  y1="16" x2="48" y2="16" stroke="#c4a46b" stroke-width=".5" opacity=".3"/>
+        <line x1="8"  y1="28" x2="48" y2="28" stroke="#c4a46b" stroke-width=".5" opacity=".4"/>
+        <line x1="8"  y1="40" x2="48" y2="40" stroke="#c4a46b" stroke-width=".5" opacity=".3"/>
+        <line x1="16" y1="8"  x2="16" y2="48" stroke="#c4a46b" stroke-width=".5" opacity=".3"/>
+        <line x1="28" y1="8"  x2="28" y2="48" stroke="#c4a46b" stroke-width=".5" opacity=".4"/>
+        <line x1="40" y1="8"  x2="40" y2="48" stroke="#c4a46b" stroke-width=".5" opacity=".3"/>
+        <circle cx="28" cy="28" r="4"   fill="none" stroke="#c4a46b" stroke-width=".9"/>
+        <circle cx="28" cy="28" r="1.8" fill="#c4a46b"/>
+        <line x1="32" y1="22" x2="42" y2="14" stroke="#8b5a5a" stroke-width=".7" opacity=".6"/>
+        <line x1="42" y1="14" x2="46" y2="18" stroke="#8b5a5a" stroke-width=".7" opacity=".6"/>
+      </svg>
+      <h3>Lo social</h3>
+      <p>
+        El malestar no surge en el vacío.
+        Las condiciones económicas, la desigualdad,
+        los vínculos y el contexto cultural
+        moldean cómo estás. La psicología honesta
+        reconoce esto.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MÉTODO — Cómo funciona el proceso
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section-method" id="proceso">
+  <div class="method-inner">
+    <div class="method-left reveal">
+      <div class="section-numeral" style="justify-content:flex-start;">
+        <span style="width:0;"></span>II
+      </div>
+      <h2>Cómo<br><em>funciona</em><br>el proceso</h2>
+      <p>
+        No hay un protocolo fijo.
+        Cada proceso se construye en el encuentro,
+        a partir de lo que traes y de lo que surge.
+        Esto es lo que generalmente ocurre.
+      </p>
+    </div>
+
+    <div class="method-steps reveal reveal-delay-1">
+      <div class="method-step">
+        <div class="step-marker">I</div>
+        <div class="step-body">
+          <h4>Encuentro inicial</h4>
+          <p>Una sesión para conocernos. No es una entrevista ni un diagnóstico rápido. Es un espacio para que puedas hablar sin filtros, y para que yo pueda escucharte.</p>
         </div>
-    </section>
-
-    <!-- Sobre Mí Section -->
-    <section id="sobre-mi" class="about">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-image">
-                    <div class="image-placeholder">
-                        <span>Foto Personal</span>
-                    </div>
-                </div>
-                <div class="about-content">
-                    <h2 class="section-title">Sobre Mí</h2>
-                    <div class="title-divider"></div>
-                    <p class="about-text">
-                        Soy Salomé Argoti, psicóloga psicoanalista con más de X años de experiencia 
-                        ayudando a personas a encontrar claridad, sanación y bienestar emocional.
-                    </p>
-                    <p class="about-text">
-                        Mi enfoque se basa en el psicoanálisis, una metodología profunda que permite 
-                        explorar las raíces inconscientes de nuestros conflictos y patrones de 
-                        comportamiento, facilitando cambios duraderos y significativos.
-                    </p>
-                    
-                    <div class="credentials">
-                        <div class="credential-item">
-                            <div class="bullet"></div>
-                            <div>
-                                <h3 class="credential-title">Formación Académica</h3>
-                                <p class="credential-text">Licenciatura en Psicología - [Universidad]</p>
-                                <p class="credential-text">Especialización en Psicoanálisis - [Institución]</p>
-                            </div>
-                        </div>
-                        <div class="credential-item">
-                            <div class="bullet"></div>
-                            <div>
-                                <h3 class="credential-title">Experiencia</h3>
-                                <p class="credential-text">+X años de práctica clínica</p>
-                                <p class="credential-text">Consulta privada y online</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="method-step">
+        <div class="step-marker">II</div>
+        <div class="step-body">
+          <h4>Exploración</h4>
+          <p>Trabajamos juntas para identificar qué está pasando realmente, más allá de los síntomas evidentes. Esto toma tiempo. Es parte del trabajo.</p>
         </div>
-    </section>
-
-    <!-- Servicios Section -->
-    <section id="servicios" class="services">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Servicios</h2>
-                <div class="title-divider center"></div>
-                <p class="section-description">
-                    Ofrezco un acompañamiento personalizado adaptado a tus necesidades específicas
-                </p>
-            </div>
-
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <div class="icon-inner"></div>
-                    </div>
-                    <h3 class="service-title">Terapia Individual</h3>
-                    <p class="service-description">
-                        Espacio confidencial para explorar tus pensamientos, emociones y conflictos personales.
-                    </p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <div class="icon-inner"></div>
-                    </div>
-                    <h3 class="service-title">Psicoanálisis</h3>
-                    <p class="service-description">
-                        Proceso profundo de autoconocimiento para comprender patrones inconscientes.
-                    </p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <div class="icon-inner"></div>
-                    </div>
-                    <h3 class="service-title">Terapia de Pareja</h3>
-                    <p class="service-description">
-                        Acompañamiento para mejorar la comunicación y resolver conflictos relacionales.
-                    </p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <div class="icon-inner"></div>
-                    </div>
-                    <h3 class="service-title">Consulta Online</h3>
-                    <p class="service-description">
-                        Sesiones virtuales con la misma calidad y confidencialidad desde donde estés.
-                    </p>
-                </div>
-            </div>
+      </div>
+      <div class="method-step">
+        <div class="step-marker">III</div>
+        <div class="step-body">
+          <h4>Elaboración</h4>
+          <p>No se trata de "resolver". Se trata de entender con mayor profundidad y actuar desde un lugar más consciente. Los cambios, cuando vienen, son reales.</p>
         </div>
-    </section>
-
-    <!-- Metodología Section -->
-    <section id="metodologia" class="methodology">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Mi Metodología</h2>
-                <div class="title-divider center"></div>
-                <p class="section-description">
-                    Un enfoque psicoanalítico centrado en tu proceso personal
-                </p>
-            </div>
-
-            <div class="methodology-grid">
-                <div class="methodology-item">
-                    <div class="step-number">01</div>
-                    <h3 class="methodology-title">Escucha Activa</h3>
-                    <p class="methodology-description">
-                        Creo un espacio seguro donde puedes expresarte libremente sin juicios.
-                    </p>
-                </div>
-
-                <div class="methodology-item">
-                    <div class="step-number">02</div>
-                    <h3 class="methodology-title">Exploración Profunda</h3>
-                    <p class="methodology-description">
-                        Trabajamos juntos para comprender las raíces de tus conflictos y patrones.
-                    </p>
-                </div>
-
-                <div class="methodology-item">
-                    <div class="step-number">03</div>
-                    <h3 class="methodology-title">Transformación</h3>
-                    <p class="methodology-description">
-                        Facilitamos cambios duraderos a través del autoconocimiento y la elaboración.
-                    </p>
-                </div>
-            </div>
-
-            <div class="expectations-box">
-                <h3 class="expectations-title">¿Qué esperar de las sesiones?</h3>
-                <ul class="expectations-list">
-                    <li>Sesiones de 50 minutos en un ambiente confidencial y profesional</li>
-                    <li>Enfoque personalizado adaptado a tus necesidades específicas</li>
-                    <li>Proceso terapéutico respetuoso de tus tiempos y ritmos</li>
-                    <li>Acompañamiento profesional basado en ética y confidencialidad</li>
-                </ul>
-            </div>
+      </div>
+      <div class="method-step">
+        <div class="step-marker">IV</div>
+        <div class="step-body">
+          <h4>Continuidad</h4>
+          <p>El proceso no tiene fecha de caducidad artificial. Puede ser corto o largo, según lo que necesite. Lo que importa es que sea genuino.</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Contacto Section -->
-    <section id="contacto" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Contacto</h2>
-                <div class="title-divider center"></div>
-                <p class="section-description">
-                    Estoy aquí para acompañarte. Agenda tu primera sesión
-                </p>
-            </div>
-
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="contact-label">Teléfono</h3>
-                            <p class="contact-value">+593 XX XXX XXXX</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                <polyline points="22,6 12,13 2,6"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="contact-label">Email</h3>
-                            <p class="contact-value">contacto@salomeargoti.com</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                <circle cx="12" cy="10" r="3"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="contact-label">Ubicación</h3>
-                            <p class="contact-value">Quito, Ecuador</p>
-                            <p class="contact-value">Consulta presencial y online</p>
-                        </div>
-                    </div>
-
-                    <div class="social-section">
-                        <h3 class="social-title">Sígueme en redes sociales</h3>
-                        <div class="social-icons">
-                            <a href="#" class="social-icon" aria-label="Instagram">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                                </svg>
-                            </a>
-                            <a href="#" class="social-icon" aria-label="Facebook">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                                </svg>
-                            </a>
-                            <a href="#" class="social-icon" aria-label="LinkedIn">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                                    <rect x="2" y="9" width="4" height="12"/>
-                                    <circle cx="4" cy="4" r="2"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact-form-container">
-                    <h3 class="form-title">Agenda tu Sesión</h3>
-                    <div class="contact-form">
-                        <div class="form-group">
-                            <label for="name" class="form-label">Nombre Completo</label>
-                            <input type="text" id="name" class="form-input" placeholder="Tu nombre">
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" id="email" class="form-input" placeholder="tu@email.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="phone" class="form-label">Teléfono</label>
-                            <input type="tel" id="phone" class="form-input" placeholder="+593 XX XXX XXXX">
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="form-label">Mensaje</label>
-                            <textarea id="message" class="form-textarea" rows="4" placeholder="Cuéntame cómo puedo ayudarte..."></textarea>
-                        </div>
-                        <button class="btn-primary btn-full" onclick="handleSubmit()">
-                            Enviar Mensaje
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">Salomé Argoti</div>
-                <p class="footer-subtitle">Psicología y Psicoanálisis</p>
-                <div class="footer-links">
-                    <a href="#" class="footer-link">Instagram</a>
-                    <a href="#" class="footer-link">Facebook</a>
-                    <a href="#" class="footer-link">LinkedIn</a>
-                </div>
-                <div class="footer-bottom">
-                    <p class="footer-text">© 2024 Salomé Argoti. Todos los derechos reservados.</p>
-                    <p class="footer-text">Consultas confidenciales | Registro profesional: XXXX</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/593XXXXXXXXX" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="WhatsApp">
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+<!-- ═══════════════════════════════════════════════════════════
+     REALIDAD — No es solo lo que piensas
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section-reality" id="realidad">
+  <div class="reality-inner">
+    <div class="reality-left reveal">
+      <div class="reality-svg-wrap">
+        <!-- Espejo fracturado — autoobservación -->
+        <svg viewBox="0 0 380 340" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" aria-hidden="true">
+          <rect x="60"  y="40"  width="260" height="260" rx="2" stroke="#a89f94" stroke-width=".6" opacity=".3" transform="rotate(2, 190, 170)"/>
+          <rect x="80"  y="60"  width="220" height="220" rx="0" stroke="#c4a46b" stroke-width=".5" opacity=".25" fill="none"/>
+          <!-- Grietas -->
+          <line x1="190" y1="60"  x2="170" y2="150" stroke="#a89f94" stroke-width=".6" opacity=".45"/>
+          <line x1="170" y1="150" x2="210" y2="200" stroke="#a89f94" stroke-width=".5" opacity=".4"/>
+          <line x1="210" y1="200" x2="195" y2="280" stroke="#a89f94" stroke-width=".5" opacity=".35"/>
+          <line x1="170" y1="150" x2="120" y2="180" stroke="#a89f94" stroke-width=".4" opacity=".3"/>
+          <line x1="210" y1="200" x2="260" y2="230" stroke="#a89f94" stroke-width=".4" opacity=".3"/>
+          <line x1="210" y1="200" x2="250" y2="170" stroke="#a89f94" stroke-width=".35" opacity=".25"/>
+          <!-- Ojo observador -->
+          <ellipse cx="190" cy="170" rx="16" ry="10" stroke="#c4a46b" stroke-width=".7" fill="none" opacity=".6"/>
+          <circle  cx="190" cy="170" r="4"  fill="#c4a46b" opacity=".7"/>
+          <circle  cx="190" cy="170" r="1.5" fill="#0e0e0c"/>
+          <!-- Dots decorativos -->
+          <circle cx="100" cy="320" r="1.5" fill="#6b6560" opacity=".4"/>
+          <circle cx="108" cy="320" r="1.5" fill="#6b6560" opacity=".4"/>
+          <circle cx="116" cy="320" r="1.5" fill="#6b6560" opacity=".4"/>
         </svg>
-    </a>
+      </div>
+    </div>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="assets/js/particles.min.js"></script>
-    <script src="assets/js/app.js"></script>
-    <script src="assets/js/script.js"></script>
+    <div class="reality-right reveal reveal-delay-1">
+      <div class="section-numeral" style="justify-content:flex-start;">
+        <span style="width:0;"></span>III
+      </div>
+      <h2>No es solo<br><em>lo que piensas</em><br>de ti mismo.</h2>
+      <p>
+        Muchas veces el malestar tiene que ver con condiciones externas
+        que no eligiste: la presión económica, las relaciones de poder,
+        la manera en que te trataron cuando eras pequeña.
+      </p>
+      <p>
+        Una psicología honesta no ignora eso.
+        No te pide que "pienses en positivo"
+        cuando las circunstancias son difíciles.
+        Te toma en serio.
+      </p>
+      <div class="reality-tag">
+        <div class="tag-dot"></div>
+        <span>Enfoque integrativo: neuro, psíquico y social</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CONTACTO
+     ═══════════════════════════════════════════════════════════ -->
+<section class="section-contact" id="contacto">
+  <div class="contact-inner reveal">
+    <div class="section-numeral">IV</div>
+    <h2>Si algo de esto<br><em>te suena</em></h2>
+    <p>
+      No necesitas estar en crisis para buscar este espacio.
+      Solo necesitas tener algo que pensar,
+      algo que no del del entender del todo,
+      algo que merece más atención de la que le das.
+    </p>
+    <a href="#" class="contact-cta"><span>Solicitar una sesión</span></a>
+    <p class="contact-note">Sin compromiso. Sin protocolos de 12 pasos. Solo una conversación.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-left">
+    <div class="footer-name">Salomé Argoti</div>
+    Psicología Clínica y Psicoanálisis — Quito, Ecuador
+  </div>
+  <div class="footer-right">
+    <a href="#" aria-label="Instagram">Instagram</a>
+    <a href="#" aria-label="WhatsApp">WhatsApp</a>
+    <a href="#" aria-label="Contacto">Contacto</a>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCRIPTS
+     jQuery (CDN slim) → script.js → app.js
+     ═══════════════════════════════════════════════════════════ -->
+<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+        integrity="sha256-/auto+5okRZnuc9c7WiGU+SqJKe77Q/HtgK1KpaofvwY="
+        crossorigin="anonymous"></script>
+<script src="assets/js/script.js"></script>
+<script src="assets/js/app.js"></script>
 </body>
 </html>

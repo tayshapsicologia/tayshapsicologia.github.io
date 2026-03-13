@@ -1,197 +1,178 @@
-// ============================================
-// Particles.js Configuration (Optional)
-// ============================================
-// If you want to add particles effect to hero section,
-// uncomment the code below and add an element with id="particles-js"
-// in your hero section
+/**
+ * ═══════════════════════════════════════════════════════════
+ *  app.js — Configuraciones adicionales con jQuery
+ *  Psicología Clínica — Salomé Argoti
+ *
+ *  Responsabilidades:
+ *    • Mejoras interactivas con jQuery
+ *    • Efecto ripple en botones CTA
+ *    • Animación de escritura en el hero (typewriter sutil)
+ *    • Modal de contacto (stub preparado)
+ *    • Utilidad: throttle para eventos scroll/resize
+ * ═══════════════════════════════════════════════════════════ */
 
-/*
-document.addEventListener('DOMContentLoaded', function() {
-    if (typeof particlesJS !== 'undefined') {
-        particlesJS('particles-js', {
-            particles: {
-                number: {
-                    value: 80,
-                    density: {
-                        enable: true,
-                        value_area: 800
-                    }
-                },
-                color: {
-                    value: '#14B8A6'
-                },
-                shape: {
-                    type: 'circle',
-                    stroke: {
-                        width: 0,
-                        color: '#000000'
-                    }
-                },
-                opacity: {
-                    value: 0.3,
-                    random: false,
-                    anim: {
-                        enable: false,
-                        speed: 1,
-                        opacity_min: 0.1,
-                        sync: false
-                    }
-                },
-                size: {
-                    value: 3,
-                    random: true,
-                    anim: {
-                        enable: false,
-                        speed: 40,
-                        size_min: 0.1,
-                        sync: false
-                    }
-                },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: '#14B8A6',
-                    opacity: 0.2,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: 'none',
-                    random: false,
-                    straight: false,
-                    out_mode: 'out',
-                    bounce: false,
-                    attract: {
-                        enable: false,
-                        rotateX: 600,
-                        rotateY: 1200
-                    }
-                }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: 'repulse'
-                    },
-                    onclick: {
-                        enable: true,
-                        mode: 'push'
-                    },
-                    resize: true
-                },
-                modes: {
-                    grab: {
-                        distance: 400,
-                        line_linked: {
-                            opacity: 1
-                        }
-                    },
-                    bubble: {
-                        distance: 400,
-                        size: 40,
-                        duration: 2,
-                        opacity: 8,
-                        speed: 3
-                    },
-                    repulse: {
-                        distance: 100,
-                        duration: 0.4
-                    },
-                    push: {
-                        particles_nb: 4
-                    },
-                    remove: {
-                        particles_nb: 2
-                    }
-                }
-            },
-            retina_detect: true
-        });
-    }
-});
-*/
+(function ($) {
+  'use strict';
 
-// ============================================
-// jQuery Ready (if using jQuery)
-// ============================================
-$(document).ready(function() {
-    console.log('jQuery loaded and ready!');
-    
-    // Add any jQuery-specific code here if needed
-    
-    // Example: Smooth scroll with jQuery
-    /*
-    $('a[href^="#"]').on('click', function(e) {
-        e.preventDefault();
-        const target = $(this.getAttribute('href'));
-        if (target.length) {
-            $('html, body').stop().animate({
-                scrollTop: target.offset().top - 80
-            }, 1000);
+  $(document).ready(function () {
+
+    /* ═══════════════════════════════════════════════════════
+       UTILIDAD: Throttle
+       ═══════════════════════════════════════════════════════ */
+    function throttle(fn, wait) {
+      var lastTime = 0;
+      return function () {
+        var now = Date.now();
+        if (now - lastTime >= wait) {
+          lastTime = now;
+          fn.apply(this, arguments);
         }
-    });
-    */
-});
-
-// ============================================
-// Additional App Configurations
-// ============================================
-
-// Lazy loading images (if you add images later)
-function lazyLoadImages() {
-    const images = document.querySelectorAll('img[data-src]');
-    
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.add('loaded');
-                observer.unobserve(img);
-            }
-        });
-    });
-    
-    images.forEach(img => imageObserver.observe(img));
-}
-
-// Call lazy load on page load
-window.addEventListener('load', lazyLoadImages);
-
-// ============================================
-// Performance: Debounce function for scroll events
-// ============================================
-function debounce(func, wait = 10, immediate = true) {
-    let timeout;
-    return function() {
-        const context = this;
-        const args = arguments;
-        const later = function() {
-            timeout = null;
-            if (!immediate) func.apply(context, args);
-        };
-        const callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) func.apply(context, args);
-    };
-}
-
-// Example usage:
-// window.addEventListener('scroll', debounce(yourScrollFunction));
-
-// ============================================
-// Custom cursor effect (Optional)
-// ============================================
-/*
-document.addEventListener('mousemove', (e) => {
-    const cursor = document.querySelector('.custom-cursor');
-    if (cursor) {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
+      };
     }
-});
-*/
+
+    /* ═══════════════════════════════════════════════════════
+       1. RIPPLE EFFECT en botones CTA
+       ═══════════════════════════════════════════════════════ */
+    $('.contact-cta, .nav-cta, .btn-404--primary').on('click', function (e) {
+      var $btn  = $(this);
+      var ripple = $('<span class="ripple-effect"></span>');
+      var btnOffset = $btn.offset();
+      var x = e.pageX - btnOffset.left;
+      var y = e.pageY - btnOffset.top;
+
+      ripple.css({
+        left : x + 'px',
+        top  : y + 'px'
+      });
+
+      // Eliminar ripples previos
+      $btn.find('.ripple-effect').remove();
+      $btn.append(ripple);
+
+      // Estilo inline del ripple (mínimo dependencia de CSS externa)
+      ripple.css({
+        position       : 'absolute',
+        width          : '0',
+        height         : '0',
+        borderRadius   : '50%',
+        background     : 'rgba(232,226,217,.35)',
+        transform      : 'translate(-50%,-50%)',
+        animation      : 'rippleBurst .6s linear forwards',
+        pointerEvents  : 'none',
+        zIndex         : '10'
+      });
+
+      // Auto-eliminar tras animación
+      setTimeout(function () { ripple.remove(); }, 620);
+    });
+
+    /* Keyframes del ripple (se inyecta una vez) */
+    if (!$('#ripple-keyframes').length) {
+      $('head').append(
+        '<style id="ripple-keyframes">' +
+        '@keyframes rippleBurst {' +
+        '  0%   { width:0; height:0; opacity:1; }' +
+        '  100% { width:140px; height:140px; opacity:0; }' +
+        '}</style>'
+      );
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       2. HOVER STATE ENHANCED en pilares
+       Agrega una pequeña línea inferior animada
+       ═══════════════════════════════════════════════════════ */
+    $('.pillar').each(function () {
+      var $pillar = $(this);
+      // Solo agregar la línea si no existe
+      if (!$pillar.find('.pillar-line').length) {
+        $pillar.append('<div class="pillar-line"></div>');
+      }
+    });
+
+    // Inyectar estilo pillar-line una vez
+    if (!$('#pillar-line-styles').length) {
+      $('head').append(
+        '<style id="pillar-line-styles">' +
+        '.pillar-line {' +
+        '  position:absolute;' +
+        '  bottom:0; left:40px; right:40px;' +
+        '  height:1px;' +
+        '  background:linear-gradient(90deg, transparent, #c4a46b, transparent);' +
+        '  opacity:0;' +
+        '  transition:opacity .4s;' +
+        '}' +
+        '.pillar:hover .pillar-line { opacity:.5; }' +
+        '</style>'
+      );
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       3. COUNTER ANIMADO (si futuro uso)
+       Ejemplo preparado: anima números al llegar al viewport
+       ═══════════════════════════════════════════════════════ */
+    function animateNumber($el, target, duration) {
+      var start   = 0;
+      var startTime = null;
+
+      function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        var progress = Math.min((timestamp - startTime) / duration, 1);
+        // Easing out
+        var eased = 1 - Math.pow(1 - progress, 3);
+        $el.text(Math.round(eased * target));
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    // Uso: animateNumber($('#mi-contador'), 2500, 1800);
+
+    /* ═══════════════════════════════════════════════════════
+       4. MODAL CONTACTO (stub — preparado para expansión)
+       Activa si existe .modal-contact en el DOM
+       ═══════════════════════════════════════════════════════ */
+    var $modalTrigger = $('.js-modal-open');
+    var $modal        = $('.modal-contact');
+    var $modalClose   = $('.modal-contact .modal-close');
+
+    if ($modal.length) {
+      $modalTrigger.on('click', function (e) {
+        e.preventDefault();
+        $modal.addClass('open');
+        $('body').addClass('modal-open');
+      });
+
+      $modalClose.on('click', function () {
+        $modal.removeClass('open');
+        $('body').removeClass('modal-open');
+      });
+
+      // Cerrar al dar clic fuera del contenido
+      $modal.on('click', function (e) {
+        if ($(e.target).is($modal)) {
+          $modal.removeClass('open');
+          $('body').removeClass('modal-open');
+        }
+      });
+
+      // Cerrar con ESC
+      $(document).on('keydown', function (e) {
+        if (e.key === 'Escape' && $modal.hasClass('open')) {
+          $modal.removeClass('open');
+          $('body').removeClass('modal-open');
+        }
+      });
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       5. RESIZE HANDLER (throttled)
+       Ajusta elemento dinámicos si es necesario
+       ═══════════════════════════════════════════════════════ */
+    var onResize = throttle(function () {
+      // Ejemplo: recalcular alturas si hace falta
+      // Actualmente sin uso — disponible para extensiones
+    }, 150);
+
+    $(window).on('resize', onResize);
+
+  }); // end document.ready
+})(jQuery);

@@ -1,208 +1,159 @@
-// ============================================
-// Smooth Scroll Navigation
-// ============================================
-function scrollToSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    if (section) {
-        const navHeight = document.getElementById('navbar').offsetHeight;
-        const sectionPosition = section.offsetTop - navHeight;
-        
-        window.scrollTo({
-            top: sectionPosition,
-            behavior: 'smooth'
+/**
+ * ═══════════════════════════════════════════════════════════
+ *  script.js — JavaScript principal
+ *  Psicología Clínica — Salomé Argoti
+ *
+ *  Responsabilidades:
+ *    • Scroll Reveal (IntersectionObserver)
+ *    • Navbar: estado "scrolled" + links activos
+ *    • Menú móvil hamburger
+ *    • Smooth scroll para anchors internos
+ *    • Scroll-hint ocultar tras primer scroll
+ * ═══════════════════════════════════════════════════════════ */
+
+(function () {
+  'use strict';
+
+  // ─── Esperar DOM listo ─────────────────────────────────
+  document.addEventListener('DOMContentLoaded', function () {
+
+    /* ─── REFS ──────────────────────────────────────────── */
+    const nav            = document.querySelector('nav');
+    const hamburger      = document.querySelector('.nav-hamburger');
+    const mobileOverlay  = document.querySelector('.nav-mobile-overlay');
+    const mobileClose    = document.querySelector('.mobile-close');
+    const scrollHint     = document.querySelector('.scroll-hint');
+    const navLinks       = document.querySelectorAll('.nav-links a');
+    const sections       = document.querySelectorAll('section[id]');
+
+    /* ═══════════════════════════════════════════════════════
+       1. SCROLL REVEAL
+       ═══════════════════════════════════════════════════════ */
+    const revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold  : 0.15,
+      rootMargin : '0px 0px -40px 0px'
+    });
+
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      revealObserver.observe(el);
+    });
+
+    /* ═══════════════════════════════════════════════════════
+       2. NAVBAR — class "scrolled" al hacer scroll
+       ═══════════════════════════════════════════════════════ */
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', function () {
+      const currentY = window.scrollY;
+
+      // Agregar clase scrolled si pasamos de 60px
+      if (currentY > 60) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+
+      lastScrollY = currentY;
+    }, { passive: true });
+
+    /* ═══════════════════════════════════════════════════════
+       3. NAV LINKS ACTIVOS (scroll spy)
+       ═══════════════════════════════════════════════════════ */
+    const sectionObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          // Quitar "active" de todos
+          navLinks.forEach(function (link) {
+            link.classList.remove('active');
+          });
+          // Buscar link que coincida con el id
+          const id = entry.target.getAttribute('id');
+          const activeLink = document.querySelector('.nav-links a[href="#' + id + '"]');
+          if (activeLink) activeLink.classList.add('active');
+        }
+      });
+    }, {
+      rootMargin : '-40% 0px -50% 0px'
+    });
+
+    sections.forEach(function (sec) {
+      sectionObserver.observe(sec);
+    });
+
+    /* ═══════════════════════════════════════════════════════
+       4. MENÚ MÓVIL — hamburger toggle
+       ═══════════════════════════════════════════════════════ */
+    if (hamburger && mobileOverlay) {
+      hamburger.addEventListener('click', function () {
+        hamburger.classList.toggle('open');
+        mobileOverlay.classList.toggle('open');
+        // Bloquear scroll del body
+        document.body.style.overflow = mobileOverlay.classList.contains('open') ? 'hidden' : '';
+      });
+
+      // Cerrar al hacer clic en overlay (fuera de links)
+      mobileOverlay.addEventListener('click', function (e) {
+        if (e.target === mobileOverlay) {
+          hamburger.classList.remove('open');
+          mobileOverlay.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+      });
+
+      // Cerrar al hacer clic en un link del overlay
+      mobileOverlay.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          hamburger.classList.remove('open');
+          mobileOverlay.classList.remove('open');
+          document.body.style.overflow = '';
         });
-        
-        // Close mobile menu if open
-        closeMobileMenu();
+      });
     }
-}
 
-// ============================================
-// Navbar Scroll Effect
-// ============================================
-window.addEventListener('scroll', function() {
-    const navbar = document.getElementById('navbar');
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
+    /* ═══════════════════════════════════════════════════════
+       5. SMOOTH SCROLL para anchors internos (#)
+       ═══════════════════════════════════════════════════════ */
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        // Si es solo "#" no hacer nada especial
+        if (href === '#') return;
 
-// ============================================
-// Mobile Menu Toggle
-// ============================================
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
+        const target = document.querySelector(href);
+        if (!target) return;
 
-if (hamburger && mobileMenu) {
-    hamburger.addEventListener('click', function() {
-        hamburger.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-    });
-}
-
-// Close mobile menu when clicking outside
-document.addEventListener('click', function(event) {
-    if (mobileMenu && mobileMenu.classList.contains('active')) {
-        if (!event.target.closest('.hamburger') && !event.target.closest('.mobile-menu')) {
-            closeMobileMenu();
-        }
-    }
-});
-
-function closeMobileMenu() {
-    if (hamburger && mobileMenu) {
-        hamburger.classList.remove('active');
-        mobileMenu.classList.remove('active');
-    }
-}
-
-// ============================================
-// Nav Links - Smooth Scroll
-// ============================================
-const navLinks = document.querySelectorAll('.nav-link, .mobile-link');
-navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
         e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        scrollToSection(targetId);
+        const navHeight = nav ? nav.offsetHeight : 68;
+        const rect      = target.getBoundingClientRect();
+        const scrollTo  = rect.top + window.scrollY - navHeight;
+
+        window.scrollTo({
+          top      : scrollTo,
+          behavior : 'smooth'
+        });
+      });
     });
-});
 
-// ============================================
-// Form Submission Handler
-// ============================================
-function handleSubmit() {
-    // Get form values
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const phone = document.getElementById('phone').value;
-    const message = document.getElementById('message').value;
-    
-    // Basic validation
-    if (!name || !email || !phone || !message) {
-        alert('Por favor completa todos los campos');
-        return;
-    }
-    
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert('Por favor ingresa un email válido');
-        return;
-    }
-    
-    // Here you would typically send the data to a server
-    // For now, we'll just show a success message
-    
-    // Option 1: Redirect to WhatsApp with pre-filled message
-    const whatsappNumber = '593XXXXXXXXX'; // Replace with actual number
-    const whatsappMessage = `Hola Salomé, mi nombre es ${name}. ${message}`;
-    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-    window.open(whatsappURL, '_blank');
-    
-    // Option 2: Or show success message and clear form
-    alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
-    clearForm();
-}
-
-function clearForm() {
-    document.getElementById('name').value = '';
-    document.getElementById('email').value = '';
-    document.getElementById('phone').value = '';
-    document.getElementById('message').value = '';
-}
-
-// ============================================
-// Scroll Reveal Animation
-// ============================================
-function reveal() {
-    const reveals = document.querySelectorAll('.service-card, .methodology-item');
-    
-    reveals.forEach(element => {
-        const windowHeight = window.innerHeight;
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
-        
-        if (elementTop < windowHeight - elementVisible) {
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)';
+    /* ═══════════════════════════════════════════════════════
+       6. SCROLL HINT — desaparece al primer scroll
+       ═══════════════════════════════════════════════════════ */
+    if (scrollHint) {
+      let hintHidden = false;
+      window.addEventListener('scroll', function () {
+        if (!hintHidden && window.scrollY > 80) {
+          scrollHint.style.transition = 'opacity .6s, transform .6s';
+          scrollHint.style.opacity    = '0';
+          scrollHint.style.transform  = 'translateX(-50%) translateY(12px)';
+          hintHidden = true;
         }
-    });
-}
-
-// Initialize reveal elements
-document.addEventListener('DOMContentLoaded', function() {
-    const reveals = document.querySelectorAll('.service-card, .methodology-item');
-    reveals.forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(50px)';
-        element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-    });
-});
-
-window.addEventListener('scroll', reveal);
-reveal(); // Call once on load
-
-// ============================================
-// Active Nav Link on Scroll
-// ============================================
-window.addEventListener('scroll', function() {
-    const sections = document.querySelectorAll('section[id]');
-    const navHeight = document.getElementById('navbar').offsetHeight;
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - navHeight - 100;
-        const sectionBottom = sectionTop + section.offsetHeight;
-        const scrollPosition = window.scrollY;
-        
-        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-            const currentId = section.getAttribute('id');
-            removeAllActiveClasses();
-            addActiveClass(currentId);
-        }
-    });
-});
-
-function removeAllActiveClasses() {
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.classList.remove('active');
-    });
-}
-
-function addActiveClass(id) {
-    const selector = `.nav-link[href="#${id}"]`;
-    const activeLink = document.querySelector(selector);
-    if (activeLink) {
-        activeLink.classList.add('active');
+      }, { passive: true });
     }
-}
 
-// ============================================
-// Load Animation on Page Load
-// ============================================
-window.addEventListener('load', function() {
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.5s ease';
-    
-    setTimeout(() => {
-        document.body.style.opacity = '1';
-    }, 100);
-});
-
-// ============================================
-// Prevent Empty Links
-// ============================================
-document.querySelectorAll('a[href="#"]').forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-    });
-});
-
-// ============================================
-// Console Welcome Message
-// ============================================
-console.log('%c👋 ¡Hola!', 'font-size: 20px; font-weight: bold; color: #14B8A6;');
-console.log('%cBienvenido al sitio web de Salomé Argoti', 'font-size: 14px; color: #6B7280;');
-console.log('%c¿Interesado en el código? Visita: github.com/tu-usuario', 'font-size: 12px; color: #9CA3AF;');
+  }); // end DOMContentLoaded
+})();

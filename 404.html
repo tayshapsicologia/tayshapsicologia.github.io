@@ -1,32 +1,76 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Página no encontrada | Salomé Argoti</title>
-    <link rel="stylesheet" href="assets/css/404.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#0e0e0c"/>
+  <title>Página no encontrada — Salomé Argoti</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg"/>
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <!-- CSS 404 -->
+  <link rel="stylesheet" href="assets/css/404.css"/>
 </head>
 <body>
-    <div class="error-container">
-        <div class="error-content">
-            <h1 class="error-code">404</h1>
-            <h2 class="error-title">Página no encontrada</h2>
-            <p class="error-description">
-                Lo sentimos, la página que buscas no existe o ha sido movida.
-            </p>
-            <div class="error-buttons">
-                <a href="index.html" class="btn-primary">Volver al Inicio</a>
-                <a href="index.html#contacto" class="btn-secondary">Contactar</a>
-            </div>
-        </div>
-        <div class="error-illustration">
-            <div class="circle circle-1"></div>
-            <div class="circle circle-2"></div>
-            <div class="circle circle-3"></div>
-        </div>
-    </div>
 
-    <script src="assets/js/404.js"></script>
+<!-- Canvas de partículas (fondo) -->
+<canvas id="particles-canvas" style="position:fixed;inset:0;z-index:0;pointer-events:none;"></canvas>
+
+<!-- Círculos concéntricos (parallax) -->
+<div class="bg-circles" aria-hidden="true">
+  <div class="bg-circle"></div>
+  <div class="bg-circle"></div>
+  <div class="bg-circle"></div>
+  <div class="bg-circle"></div>
+  <div class="bg-circle"></div>
+</div>
+
+<!-- ═══ CONTENIDO 404 ═══ -->
+<div class="page-404">
+  <div class="content-404">
+
+    <!-- Logo -->
+    <a href="index.html" class="logo-404">Salomé <em>Argoti</em></a>
+
+    <!-- Número -->
+    <div class="number-404">404</div>
+
+    <!-- Separador -->
+    <div class="divider-404"></div>
+
+    <!-- Título -->
+    <h1 class="title-404">Esta página no existe</h1>
+
+    <!-- Descripción -->
+    <p class="desc-404">
+      La página que buscas ya no está aquí, o nunca existió.<br>
+      No te preocupes — es más fácil de lo que parece volver.
+    </p>
+
+    <!-- Botones -->
+    <div class="buttons-404">
+      <a href="index.html" class="btn-404 btn-404--primary">
+        <span>Volver al inicio</span>
+      </a>
+      <a href="index.html#contacto" class="btn-404 btn-404--secondary">
+        Solicitar sesión
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer pequeño -->
+  <div class="footer-404">
+    © Salomé Argoti — Psicología Clínica, Quito
+  </div>
+</div>
+
+<!-- Script 404 (sin dependencia de jQuery) -->
+<script src="assets/js/404.js"></script>
 </body>
 </html>
